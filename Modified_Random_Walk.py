@@ -9,18 +9,22 @@ class RandomeWalkMod():
         self.x_values = [0]
         self.y_values = [0]
 
+    def get_step(self):
+        """refactoring the fill_walk method to calculate x and y steps"""
+ # Decide what direction to go and what distance to travel
+        direction = choice([-1,1])
+        distance = choice([0,1,2,3,4])
+        step = direction * distance
+
+        return step
+
     def fill_walk(self):
         """calculate all the points in the walk"""
         while len(self.x_values) < self.number_of_points:
 
             # Decide what direction to go and what distance to travel
-            x_direction = choice([1,-1]) 
-            x_distance = choice([0,1,2,3,4,5,6,7,8])
-            x_step = x_direction * x_distance
-
-            y_direction = choice([1])
-            y_distance = choice([0,1,2,3,4,5,6,7,8])
-            y_step = y_direction * y_distance
+            x_step = self.get_step()
+            y_step = self.get_step()
 
             # Reject moves that go nowhere
 
